@@ -1,0 +1,100 @@
+﻿@using WebApplication1.Models
+@model IEnumerable<Patient>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<ejs-grid id="Grid" dataSource="@ViewBag.Patients" height="273" toolbar="@(new List<string>() { "Add", "Edit", "Delete","Update","Cancel" })">
+    <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true" mode="Normal"></e-grid-editSettings>
+        <e-grid-columns>
+            <e-grid-column field="Name" headerText="Name" validationRules="@(new { required=true})"  textAlign="Right" width="100"></e-grid-column>
+            <e-grid-column field="Gender" headerText="Gender" validationRules="@(new { required=true})" type="string" width="120"></e-grid-column>
+            <e-grid-column field="PhoneNumber" headerText="Phone" textAlign="Right" format="C2" editType="numericedit" width="120"></e-grid-column>
+            <e-grid-column field="Email" headerText="Email" width="150"></e-grid-column>
+        </e-grid-columns>
+</ejs-grid>
+@*<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6" >
+            <h2 class="text-primary">Patient List</h2>
+        </div>
+        <div class="col-6 text-end" >
+            <a asp-controller="Patient" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Create New Patient
+            </a>
+        </div>
+    </div>
+    <br> </br>
+
+
+<table class="table table-bordered table-striped" style="width:100%">
+     <thead>
+        <tr>
+            <th>
+               Patient Name
+            </th>
+              <th>
+               Gender
+            </th>
+              <th>
+                Email
+            </th>
+              <th>
+               Birthday
+            </th>
+            <th>
+               Address
+            </th>
+            <th>
+              Country
+            </th>
+             <th>
+              Phone Number
+            </th>
+             <th>
+              Drug Allergy
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width=50%>
+                    @obj.Name
+                </td>
+                  <td width=30%>
+                    @obj.Gender
+                </td>
+                 <td width=30%>
+                    @obj.Email
+                </td>
+                  <td width=30%>
+                    @obj.Birthday
+                </td>
+                  <td width=30%>
+                    @obj.Address
+                </td>
+                  <td width=30%>
+                    @obj.Country
+                </td>
+                  <td width=30%>
+                    @obj.PhoneNumber
+                </td>
+                  <td width=30%>
+                    @obj.DrugAllergy
+                </td>
+                
+                 <td>
+                    <div class="w-75 btn-group" role="group">
+                    <a asp-controller="Patient" asp-action="Edit" asp-route-id="@obj.Id"
+                    class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Edit </a>
+                    @* <a asp-controller="Patient" asp-action="Delete" asp-route-id="@obj.Id"
+                    class="btn btn-primary mx-2"><i class="bi bi-trash-fill"></i> Delete </a>*@
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

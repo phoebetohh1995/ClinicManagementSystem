@@ -1,0 +1,56 @@
+﻿@using WebApplication1.Models
+@model Patient
+
+<form method="post" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit Patient</h2>
+            </hr>
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+			<label asp-for="Email"></label>
+			<input asp-for="Email" class="form-control" />
+			<span asp-validation-for="Email" class="text-danger"></span>
+		</div>
+          <div class="mb-3">
+            <label asp-for="Gender"></label>
+            <br>
+            Male<input checked="checked" id="Gender"  name="Gender" type="radio"  value="Male"/>
+            Female<input id="Gender"  name="Gender" type="radio"  value="Female"/>
+            </br>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="Birthday"></label>
+            <input asp-for="Birthday" class="form-control"/>
+            <span asp-validation-for="Birthday" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" class="form-control"/>
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="DrugAllergy"></label>
+            <input asp-for="DrugAllergy" class="form-control"/>
+            <span asp-validation-for="DrugAllergy" class="text-danger"></span>
+        </div>
+       
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        <a asp-controller="Patient" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

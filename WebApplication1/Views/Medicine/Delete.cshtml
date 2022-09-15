@@ -1,0 +1,36 @@
+﻿@using WebApplication1.Models
+@model Medicine
+
+<form method="post" asp-action="Delete">
+	<input asp-for="Id" hidden />
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Delete Medicine</h2>
+			<hr />
+		</div>
+		@*<div asp-validation-summary="All"></div>*@
+		<div class="mb-3">
+			<label asp-for="Name"></label>
+			<input asp-for="Name" disabled class="form-control" />
+		</div>
+		<div class="mb-2">
+			<label asp-for="Quantity"></label>
+			<input asp-for="Quantity" disabled class="form-control" />
+		</div>
+		 <div class="mb-3">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" class="form-control"/>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+		<button type="submit" class="btn btn-danger" style="width:100px">Delete</button>
+		<a asp-controller="Medicine" asp-action="Index" class="btn btn-secondary" style="width:100px">
+			Back to List
+		</a>
+	</div>
+</form>
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}

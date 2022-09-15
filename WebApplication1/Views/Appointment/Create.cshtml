@@ -1,0 +1,38 @@
+﻿@model WebApplication1.Models.Appointment
+
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Appointment</h2>
+            </hr>
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+            <label asp-for="DoctorId"></label>
+            <select asp-for="DoctorId" class="form-control" asp-items="ViewBag.DoctorId"></select>
+            <span asp-validation-for="DoctorId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PatientId"></label>
+            <select asp-for="PatientId" class="form-control" asp-items="ViewBag.PatientId"></select>
+            <span asp-validation-for="PatientId" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="ApptDateTime"></label>
+            <input asp-for="ApptDateTime" class="form-control"/>
+            <span asp-validation-for="ApptDateTime" class="text-danger"></span>
+        </div>
+      
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Appointment" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
